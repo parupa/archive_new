@@ -1,0 +1,171 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111312">
+  <title>My hoto</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #111312;
+      --ink: #f2f1ec;
+      --muted: #a5a69f;
+      --line: #363936;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem clamp(1rem, 4vw, 3.5rem);
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0;
+      font-family: "Arial", "Helvetica Neue", sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      font-weight: 800;
+      line-height: .95;
+      letter-spacing: .12em;
+      color: #f4f5f1;
+      background: linear-gradient(105deg, #ffffff 8%, #b8c0bb 58%, #f8f8f5 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h1::after {
+      content: "";
+      display: block;
+      width: 2.15em;
+      height: 2px;
+      margin-top: .3em;
+      background: linear-gradient(90deg, #dfe4df, transparent);
+    }
+    .count { color: var(--muted); font-size: .78rem; letter-spacing: .08em; }
+    main { padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3.5rem) 3rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.25rem, 2.6vw, 2.4rem);
+    }
+    figure { min-width: 0; margin: 0; }
+    .photo-frame { position: relative; padding: 8px; border: 1px solid #4c514d; background: #202320; box-shadow: 0 14px 26px rgb(0 0 0 / 32%), inset 0 0 0 1px rgb(255 255 255 / 6%); }
+    .photo-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: #242724;
+      cursor: zoom-in;
+      overflow: hidden;
+    }
+    .photo-button img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 350ms ease;
+    }
+    .photo-button:hover img { transform: scale(1.015); }
+    .photo-button:focus-visible { outline: 2px solid #e7e6df; outline-offset: 4px; }
+    figcaption { padding-top: .8rem; }
+    .name { margin: 0; color: #f2f1ec; font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif; font-size: clamp(1.35rem, 2vw, 1.7rem); font-weight: 700; letter-spacing: .1em; }
+    .tags { position: absolute; right: 1rem; bottom: 1rem; display: grid; gap: .28rem; max-width: calc(100% - 1.3rem); margin: 0; padding: 0; color: #fff; text-shadow: 0 1px 3px rgb(0 0 0 / 85%); text-align: right; font-size: .72rem; line-height: 1.4; }
+    .tag { display: block; }
+    .tag dt { display: none; }
+    .tag[data-label="いつ"] dd { font-family: "Courier New", monospace; font-size: .78rem; letter-spacing: .04em; }
+    .tag dd { margin: 0; }
+    .words { margin: .55rem 0 0; color: var(--muted); font-size: .83rem; }
+    dialog {
+      width: min(94vw, 1100px);
+      max-width: none;
+      max-height: 94dvh;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+    dialog::backdrop { background: rgb(17 17 15 / 88%); }
+    dialog img { display: block; max-width: 100%; max-height: 90dvh; margin: auto; object-fit: contain; }
+    @media (max-width: 850px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) {
+      header { padding: 1.1rem 1rem; }
+      main { padding: 1rem 1rem 2rem; }
+      .grid { grid-template-columns: 1fr; gap: 1.6rem; }
+      figcaption { padding-top: .65rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My hoto</h1>
+    <span class="count" aria-label="写真5点">05</span>
+  </header>
+  <main>
+    <section class="grid" aria-label="写真一覧">
+      <figure><div class="photo-frame"><button class="photo-button" type="button" aria-label="センニチコウ を拡大"><img src="images/01.jpg" alt="センニチコウ" loading="eager"></button><dl class="tags" data-tags='[{"label":"名前","value":"センニチコウ"},{"label":"いつ","value":"2026.9/20"},{"label":"どこで","value":"神戸布引ハーブ園"}]'></dl></div><figcaption><p class="name">センニチコウ</p><p class="words">（ここに言葉）</p></figcaption></figure>
+      <figure><div class="photo-frame"><button class="photo-button" type="button" aria-label="ルリマツリ を拡大"><img src="images/02.jpg" alt="ルリマツリ" loading="lazy"></button><dl class="tags" data-tags='[{"label":"名前","value":"ルリマツリ"},{"label":"いつ","value":"2026.9/20"},{"label":"どこで","value":"神戸布引ハーブ園"}]'></dl></div><figcaption><p class="name">ルリマツリ</p><p class="words">（ここに言葉）</p></figcaption></figure>
+      <figure><div class="photo-frame"><button class="photo-button" type="button" aria-label="マダム・シャルル を拡大"><img src="images/05.jpg" alt="マダム・シャルル" loading="lazy"></button><dl class="tags" data-tags='[{"label":"名前","value":"マダム・シャルル"},{"label":"いつ","value":"2026.9/20"},{"label":"どこで","value":"神戸布引ハーブ園"}]'></dl></div><figcaption><p class="name">マダム・シャルル</p><p class="words">（ここに言葉）</p></figcaption></figure>
+      <figure><div class="photo-frame"><button class="photo-button" type="button" aria-label="ハチ を拡大"><img src="images/04.jpg" alt="ハチ" loading="lazy"></button><dl class="tags" data-tags='[{"label":"名前","value":"ハチ"},{"label":"いつ","value":"2026.9/20"},{"label":"どこで","value":"神戸布引ハーブ園"}]'></dl></div><figcaption><p class="name">ハチ</p><p class="words">（ここに言葉）</p></figcaption></figure>
+      <figure><div class="photo-frame"><button class="photo-button" type="button" aria-label="バーベナ を拡大"><img src="images/03.jpg" alt="バーベナ" loading="lazy"></button><dl class="tags" data-tags='[{"label":"名前","value":"バーベナ"},{"label":"いつ","value":"2026.9/20"},{"label":"どこで","value":"神戸布引ハーブ園"}]'></dl></div><figcaption><p class="name">バーベナ</p><p class="words">（ここに言葉）</p></figcaption></figure>
+    </section>
+  </main>
+  <dialog aria-label="写真拡大表示"><img alt=""></dialog>
+  <script>
+    document.querySelectorAll(".tags[data-tags]").forEach((list) => {
+      JSON.parse(list.dataset.tags).filter(({ label }) => label !== "名前").forEach(({ label, value }) => {
+        const row = document.createElement("div");
+        row.className = "tag";
+        row.dataset.label = label;
+        const term = document.createElement("dt");
+        term.textContent = label;
+        const detail = document.createElement("dd");
+        detail.textContent = value;
+        row.append(term, detail);
+        list.append(row);
+      });
+    });    const viewer = document.querySelector('dialog');
+    const viewerImage = viewer.querySelector('img');
+    document.querySelectorAll('.photo-button').forEach((button) => {
+      button.addEventListener('click', () => {
+        viewerImage.src = button.querySelector('img').src;
+        viewerImage.alt = button.querySelector('img').alt;
+        viewer.showModal();
+      });
+    });
+    viewer.addEventListener('click', (event) => {
+      if (event.target === viewer || event.target === viewerImage) viewer.close();
+    });
+    viewer.addEventListener('close', () => { viewerImage.removeAttribute('src'); });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
